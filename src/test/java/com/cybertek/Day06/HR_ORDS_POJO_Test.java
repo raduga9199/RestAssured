@@ -36,7 +36,12 @@ public class HR_ORDS_POJO_Test extends importsAndURL {
 
         Locations l1 = response.as(Locations.class);
 
-
+        System.out.println("Country ID is: " + l1.getCountry_id());
+        System.out.println("Location ID is: " + l1.getLocation_id());
+        System.out.println("City is: " + l1.getCity());
+        System.out.println("Postal code is: " + l1.getPostal_code());
+        System.out.println("State Province is: " + l1.getState_province());
+        System.out.println("Street Address is: " + l1.getStreet_address());
 
 
     }
