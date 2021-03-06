@@ -31,11 +31,14 @@ public class HR_ORDS_POJO_Test extends importsAndURL {
                                     .pathParam("location_id", 1700)
                                     .log().all().
                             when()
-                                    .get("/location/{location_id}")
+                                    .get("/locations/{location_id}")
                                     .prettyPeek();
 
         Locations l1 = response.as(Locations.class);
-        l1.getCity();
+
+
+
+
     }
 
 }
