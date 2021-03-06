@@ -2,10 +2,14 @@ package com.cybertek.pojo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Locations {
-    private int location_id;
+
+    @JsonProperty(value = "location_id")
+    private int locationID;
+
     private String street_address;
     private String postal_code;
     private String city;
@@ -15,7 +19,7 @@ public class Locations {
     @Override
     public String toString() {
         return "Locations{" +
-                "location_id=" + location_id +
+                "location_id=" + locationID +
                 ", street_address='" + street_address + '\'' +
                 ", postal_code='" + postal_code + '\'' +
                 ", city='" + city + '\'' +
@@ -24,50 +28,39 @@ public class Locations {
                 '}';
     }
 
-    public int getLocation_id() {
-        return location_id;
+    public int getLocationID() {
+        return locationID;
     }
-
-    public void setLocation_id(int location_id) {
-        this.location_id = location_id;
+    public void setLocationID(int location_id) {
+        this.locationID = location_id;
     }
-
     public String getStreet_address() {
         return street_address;
     }
-
     public void setStreet_address(String street_address) {
         this.street_address = street_address;
     }
-
     public String getPostal_code() {
         return postal_code;
     }
-
     public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
-
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
-
     public String getState_province() {
         return state_province;
     }
-
     public void setState_province(String state_province) {
         this.state_province = state_province;
     }
-
     public String getCountry_id() {
         return country_id;
     }
-
     public void String (String country_id) {
         this.country_id = country_id;
     }
