@@ -14,6 +14,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,6 +64,9 @@ public class HR_ORDS_POJO_Test extends importsAndURL {
         for (Locations each : locations){
             System.out.println("Version 2: " + each);
         }
+
+
+        assertThat(locations, hasSize(23));
 
 
 
