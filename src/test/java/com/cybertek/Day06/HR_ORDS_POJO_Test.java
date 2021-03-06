@@ -68,6 +68,14 @@ public class HR_ORDS_POJO_Test extends importsAndURL {
 
         assertThat(locations, hasSize(23));
 
+        List<String> addressList =
+                response.jsonPath().getList("items.street_address");
+
+        addressList.forEach
+                (each -> System.out.println("Each address: " + each));
+
+
+
 
 
     }
