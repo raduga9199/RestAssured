@@ -11,12 +11,12 @@ public class LibraryStarter {
         String token = "";
 
         Response response =
-                                given()
-                                        .contentType(ContentType.URLENC)
-                                            .formParam("email", username)
-                                            .formParam("password", password).
-                                when()
-                                        .post("/login");
+                given()
+                        .contentType(ContentType.URLENC)
+                        .formParam("email", username)
+                        .formParam("password", password).
+                        when()
+                        .post("/login");
 
         token = response.jsonPath().getString("token");
 
