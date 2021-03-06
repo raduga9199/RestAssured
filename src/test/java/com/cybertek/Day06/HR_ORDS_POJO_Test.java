@@ -2,12 +2,15 @@ package com.cybertek.Day06;
 
 import com.cybertek.Day01.importsAndURL;
 import com.cybertek.pojo.Locations;
+import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import io.restassured.RestAssured;
 import io.restassured.matcher.ResponseAwareMatcher;
 import io.restassured.response.Response;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
@@ -45,6 +48,26 @@ public class HR_ORDS_POJO_Test extends importsAndURL {
 
 
     }
+
+    @DisplayName("Testing the /location endpoint")
+    @Test
+    public void testLocations(){
+        Response response =
+                                get("/locations");
+
+
+        List<Locations> locations =
+                                        response.jsonPath().getList("items",Locations.class);
+        locations.forEach(each -> System.out.println("Version 1: " + each));
+
+        for (Locations each : locations){
+            System.out.println("Version 2: " + each);
+        }
+
+
+
+    }
+
 
 }
 
