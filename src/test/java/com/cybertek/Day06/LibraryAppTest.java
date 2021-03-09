@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 public class LibraryAppTest {
 
@@ -18,7 +19,7 @@ public class LibraryAppTest {
     public static void init(){
         RestAssured.baseURI = "http://library1.cybertekschool.com";
         RestAssured.basePath = "/rest/v1";
-            libraryToken = loginAndGetToken("librarian69@Library", "KNPXrm3S");
+            libraryToken = loginAndGetToken("librarian69@library", "KNPXrm3S");
     }
 
     @DisplayName("Send request tp /dashboard_stats")
@@ -67,15 +68,48 @@ public class LibraryAppTest {
                 .body("email",is("librarian69@Library"))
                 .body("token",is(libraryToken));
 
+    }
 
+    @DisplayName("Send request to /dashboard_stats")
+    @Test
+    public void testDashBoardStatsWithToken(){
 
-
-
-
-
+        given()
+                .log().all()
+                .header("x-library-token",libraryToken).
+        when()
+                .get("/dashboard_stats").
+        then()
+                .log().all()
+                .statusCode(200)
+                .body("book_count", is("1955"))
+                .body("borrowed_books", is("681"))
+                .body("users", is("5083"));
 
     }
 
+    @DisplayName("Test /get_user_by_id/{id} Endpoint")
+    @Test
+    public void testSingleUserData(){
+        given()
+                .log().all()
+                .header("x-library-token",libraryToken)
+                .pathParam("id", 2080).
+        when()
+                .get("/get_user_by_id/{id}").
+        then()
+                .log().all()
+                .statusCode(200)
+                .body("id", is("2080"))
+                .body("full_name", is("Test Student 142"))
+                .body("image", is(nullValue()))
+                .body("user_group_id", is("3"));
 
+
+
+
+
+
+            }
 
 }
