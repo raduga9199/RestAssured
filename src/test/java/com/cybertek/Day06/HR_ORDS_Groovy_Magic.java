@@ -59,7 +59,7 @@ public class HR_ORDS_Groovy_Magic  extends importsAndURL {
         List<Locations> locationsList =
                 response.jsonPath().getList("items",Locations.class);
 
-        assertThat(locationsList,hasSize(23));
+        assertThat(locationsList,hasSize(25));
 
         List<Locations> usLocations =
                 response.jsonPath().getList("items.findAll{it.country_id=='US'}",Locations.class);
